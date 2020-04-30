@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans                         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd              http://www.springframework.org/schema/context                         http://www.springframework.org/schema/context/spring-context-3.2.xsd              http://www.springframework.org/schema/tx                         http://www.springframework.org/schema/tx/spring-tx-3.2.xsd                         http://www.springframework.org/schema/aop               http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">  
+  <bean id="userService" class="cn.wyx.service.impl.UserServiceImpl"> 
+    <property name="userDao" ref="userDao"/> 
+  </bean>  
+  <bean id="aboutService" class="cn.wyx.service.impl.AboutServiceImpl"> 
+    <property name="aboutDao" ref="aboutDao"/> 
+  </bean>  
+  <bean id="yewuService" class="cn.wyx.service.impl.YewuServiceImpl"> 
+    <property name="yewuDao" ref="yewuDao"/> 
+  </bean>  
+  <bean id="contactService" class="cn.wyx.service.impl.ContactServiceImpl"> 
+    <property name="contactDao" ref="contactDao"/> 
+  </bean>  
+  <bean id="anliService" class="cn.wyx.service.impl.AnliServiceImpl"> 
+    <property name="anliDao" ref="anliDao"/> 
+  </bean>  
+  <bean id="huodongService" class="cn.wyx.service.impl.HuodongServiceImpl"> 
+    <property name="huodongDao" ref="huodongDao"/> 
+  </bean>  
+  <bean id="fileupService" class="cn.wyx.service.impl.FileupServiceImpl">
+    <property name="fileupDao" ref="fileupDao"/>
+  </bean>
+</beans>
