@@ -7,8 +7,6 @@ public class DemoQuery extends Demo
 	
 	private Integer pageNo;	
 	private Integer startNum;
-		
-
 	
 	//============================================setter和getter方法=====================================================	
 	public Integer getPageNo() 

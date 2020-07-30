@@ -10,22 +10,35 @@ public class DemoDaoImpl extends BaseDaoImpl<Demo, DemoQuery> implements DemoDao
 	@Override
 	public String createHql(DemoQuery equery) 
 	{
-		String hql = "from Demo t where 1=1 ";		
+		String hql = "from Demo t where 1=1 ";
+		hql = hql + createHqlCondition(equery) + " order by t.id desc";	
 		return hql;
 	}
 
 	@Override
-	public String createHqlCount(DemoQuery q) 
+	public String createHqlCount(DemoQuery equery) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "select count(id) from Demo t where 1=1";
+		hql = hql + createHqlCondition(equery);
+		return hql;
 	}
 
 	@Override
-	public String createHqlCondition(DemoQuery q) 
+	public String createHqlCondition(DemoQuery equery) 
 	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+		String hql = "";	
+			
+		/*
+		if (StringUtils.isNotBlank(equery.[getxxx]))
+		{
+			hql = hql + " and t.[xxx] like :[xxx]";
+		}
+		if (equery.[getxxx]() != null)
+		{
+			hql = hql + " and t.[xxx] = :[xxx]";
+		}
+		*/
+		
+		return hql;
+	}	
 }

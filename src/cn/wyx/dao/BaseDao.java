@@ -8,9 +8,9 @@ public interface BaseDao<T, Q>
 
 	public void update(T t);
 
-	public T getObj(Integer id);
+	public T getObj(Long id);
 
-	public void delete(Integer id);
+	public void delete(Long id);
 
 	public void delete(T t);
 	
@@ -19,5 +19,6 @@ public interface BaseDao<T, Q>
 	public List<T> list();
 	
 	public Long queryObjByConditionCount(final Q q, final List<String> exclude);
-
+	
+	public List<T> queryObjByConditionNoPage(final Q q, final List<String> exclude );
 }

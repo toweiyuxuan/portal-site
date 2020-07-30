@@ -2,7 +2,7 @@ package cn.wyx.interceptor;
 import java.util.Map;
 
 import cn.wyx.controller.BaseAction;
-import cn.wyx.model.User;
+import cn.wyx.model.Admins;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -20,9 +20,9 @@ public class LoginInterceptor extends MethodFilterInterceptor
 		Map<String, Object> session = context.getSession();
 		
 		// 获得session中的用户
-		User user = (User) session.get("user");
+		Admins admin = (Admins) session.get("admin");
 		
-		if (user != null)
+		if (admin != null)
 		{
 			// 让拦截器继续向下走
 			result = ai.invoke();

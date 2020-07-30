@@ -1,4 +1,4 @@
-package cn.wyx.controller;
+﻿package cn.wyx.controller;
 
 import cn.wyx.query.DemoQuery;
 import cn.wyx.service.DemoService;
@@ -9,37 +9,34 @@ import com.opensymphony.xwork2.ActionContext;
 public class DemoAction extends BaseAction 
 {	
 	private DemoService demoService;
-	private DemoQuery query = new DemoQuery();
+	private DemoQuery demoQuery = new DemoQuery();
 	
 	public String demo_list()
 	{		
 		ActionContext context = ActionContext.getContext();		
-		Integer pageNo = query.getPageNo();
+		Integer pageNo = demoQuery.getPageNo();
 		if(pageNo == null )
 		{
-			query.setPageNo(1);
+			demoQuery.setPageNo(1);
 		}		
-		Page page = demoService.queryObjByCondition(query, exclude);		
+		Page page = demoService.queryObjByCondition(demoQuery, exclude);		
 		context.put("page", page);		
 		return SUCCESS;
 	}
-	
+
 	public String demo_input()
 	{
 		return SUCCESS;
 	}
 	
-	
-	
-	
 	//============================================setter and getter=====================================================
-	public DemoQuery getQuery() 
+	public DemoQuery getDemoQuery() 
 	{
-		return query;
+		return demoQuery;
 	}
-	public void setQuery(DemoQuery query)
+	public void setDemoQuery(DemoQuery demoQuery)
 	{
-		this.query = query;
+		this.demoQuery = demoQuery;
 	}
 	public DemoService getDemoService() 
 	{
@@ -48,6 +45,5 @@ public class DemoAction extends BaseAction
 	public void setDemoService(DemoService demoService) 
 	{
 		this.demoService = demoService;
-	}
-	
+	}	
 }

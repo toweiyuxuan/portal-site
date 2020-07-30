@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans                         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd               http://www.springframework.org/schema/context                         http://www.springframework.org/schema/context/spring-context-3.2.xsd              http://www.springframework.org/schema/tx                         http://www.springframework.org/schema/tx/spring-tx-3.2.xsd                         http://www.springframework.org/schema/aop                         http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">  
-  <bean id="userAction" class="cn.wyx.controller.UserAction" scope="prototype"> 
-    <property name="userService" ref="userService"/> 
+  <bean id="commonAction" class="cn.wyx.controller.CommonAction" scope="prototype"> 
+    <property name="departmentsService" ref="departmentsService"/>  
+    <property name="configsService" ref="configsService"/>  
+    <property name="businessService" ref="businessService"/>  
+    <property name="activitysService" ref="activitysService"/>  
+    <property name="examplesService" ref="examplesService"/>  
+    <property name="documentsService" ref="documentsService"/> 
   </bean>  
-  <bean id="aboutAction" class="cn.wyx.controller.AboutAction" scope="prototype"> 
-    <property name="aboutService" ref="aboutService"/>  
-    <property name="aboutDao" ref="aboutDao"/> 
+  <bean id="adminsAction" class="cn.wyx.controller.AdminsAction" scope="prototype"> 
+    <property name="adminsService" ref="adminsService"/>  
+    <property name="recordsService" ref="recordsService"/> 
   </bean>  
-  <bean id="yewuAction" class="cn.wyx.controller.YewuAction" scope="prototype"> 
-    <property name="yewuService" ref="yewuService"/>  
-    <property name="yewuDao" ref="yewuDao"/> 
+  <bean id="activitysAction" class="cn.wyx.controller.ActivitysAction" scope="prototype"> 
+    <property name="activitysService" ref="activitysService"/> 
   </bean>  
-  <bean id="contactAction" class="cn.wyx.controller.ContactAction" scope="prototype"> 
-    <property name="contactService" ref="contactService"/>  
-    <property name="contactDao" ref="contactDao"/> 
+  <bean id="businessAction" class="cn.wyx.controller.BusinessAction" scope="prototype"> 
+    <property name="businessService" ref="businessService"/> 
   </bean>  
-  <bean id="anliAction" class="cn.wyx.controller.AnliAction" scope="prototype"> 
-    <property name="anliService" ref="anliService"/>  
-    <property name="anliDao" ref="anliDao"/> 
+  <bean id="examplesAction" class="cn.wyx.controller.ExamplesAction" scope="prototype"> 
+    <property name="examplesService" ref="examplesService"/> 
   </bean>  
-  <bean id="huodongAction" class="cn.wyx.controller.HuodongAction" scope="prototype"> 
-    <property name="huodongService" ref="huodongService"/>  
-    <property name="huodongDao" ref="huodongDao"/> 
+  <bean id="configsAction" class="cn.wyx.controller.ConfigsAction" scope="prototype"> 
+    <property name="configsService" ref="configsService"/> 
   </bean>  
-  <bean id="fileupAction" class="cn.wyx.controller.FileupAction" scope="prototype">
-    <property name="fileupService" ref="fileupService"/>
-    <property name="fileupDao" ref="fileupDao"/>
-  </bean>
+  <bean id="departmentsAction" class="cn.wyx.controller.DepartmentsAction" scope="prototype"> 
+    <property name="departmentsService" ref="departmentsService"/> 
+  </bean>  
+  <bean id="documentsAction" class="cn.wyx.controller.DocumentsAction" scope="prototype"> 
+    <property name="documentsService" ref="documentsService"/> 
+  </bean>  
+  <bean id="recordsAction" class="cn.wyx.controller.RecordsAction" scope="prototype"> 
+    <property name="recordsService" ref="recordsService"/> 
+  </bean>  
+  <bean id="uploadfilesAction" class="cn.wyx.controller.UploadfilesAction" scope="prototype"> 
+    <property name="uploadfilesService" ref="uploadfilesService"/>  
+    <property name="configsService" ref="configsService"/>  
+    <property name="businessService" ref="businessService"/> 
+  </bean>  
+  <bean id="usersAction" class="cn.wyx.controller.UsersAction" scope="prototype"> 
+    <property name="usersService" ref="usersService"/> 
+  </bean> 
 </beans>

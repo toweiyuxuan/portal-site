@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans                         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd              http://www.springframework.org/schema/context                         http://www.springframework.org/schema/context/spring-context-3.2.xsd              http://www.springframework.org/schema/tx                         http://www.springframework.org/schema/tx/spring-tx-3.2.xsd                         http://www.springframework.org/schema/aop               http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">  
-  <bean id="userService" class="cn.wyx.service.impl.UserServiceImpl"> 
-    <property name="userDao" ref="userDao"/> 
+  <bean id="adminsService" class="cn.wyx.service.impl.AdminsServiceImpl"> 
+    <property name="adminsDao" ref="adminsDao"/> 
   </bean>  
-  <bean id="aboutService" class="cn.wyx.service.impl.AboutServiceImpl"> 
-    <property name="aboutDao" ref="aboutDao"/> 
+  <bean id="activitysService" class="cn.wyx.service.impl.ActivitysServiceImpl"> 
+    <property name="activitysDao" ref="activitysDao"/> 
   </bean>  
-  <bean id="yewuService" class="cn.wyx.service.impl.YewuServiceImpl"> 
-    <property name="yewuDao" ref="yewuDao"/> 
+  <bean id="businessService" class="cn.wyx.service.impl.BusinessServiceImpl"> 
+    <property name="businessDao" ref="businessDao"/>  
+    <property name="uploadfilesDao" ref="uploadfilesDao"/> 
   </bean>  
-  <bean id="contactService" class="cn.wyx.service.impl.ContactServiceImpl"> 
-    <property name="contactDao" ref="contactDao"/> 
+  <bean id="examplesService" class="cn.wyx.service.impl.ExamplesServiceImpl"> 
+    <property name="examplesDao" ref="examplesDao"/> 
   </bean>  
-  <bean id="anliService" class="cn.wyx.service.impl.AnliServiceImpl"> 
-    <property name="anliDao" ref="anliDao"/> 
+  <bean id="configsService" class="cn.wyx.service.impl.ConfigsServiceImpl"> 
+    <property name="configsDao" ref="configsDao"/> 
   </bean>  
-  <bean id="huodongService" class="cn.wyx.service.impl.HuodongServiceImpl"> 
-    <property name="huodongDao" ref="huodongDao"/> 
+  <bean id="departmentsService" class="cn.wyx.service.impl.DepartmentsServiceImpl"> 
+    <property name="departmentsDao" ref="departmentsDao"/> 
   </bean>  
-  <bean id="fileupService" class="cn.wyx.service.impl.FileupServiceImpl">
-    <property name="fileupDao" ref="fileupDao"/>
-  </bean>
+  <bean id="documentsService" class="cn.wyx.service.impl.DocumentsServiceImpl"> 
+    <property name="documentsDao" ref="documentsDao"/> 
+  </bean>  
+  <bean id="recordsService" class="cn.wyx.service.impl.RecordsServiceImpl"> 
+    <property name="recordsDao" ref="recordsDao"/> 
+  </bean>  
+  <bean id="uploadfilesService" class="cn.wyx.service.impl.UploadfilesServiceImpl"> 
+    <property name="uploadfilesDao" ref="uploadfilesDao"/> 
+  </bean>  
+  <bean id="usersService" class="cn.wyx.service.impl.UsersServiceImpl"> 
+    <property name="usersDao" ref="usersDao"/> 
+  </bean> 
 </beans>

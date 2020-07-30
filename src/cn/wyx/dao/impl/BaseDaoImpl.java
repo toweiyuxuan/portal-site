@@ -33,7 +33,7 @@ public abstract class BaseDaoImpl<T, Q> extends HibernateDaoSupport implements B
 	}
 
 	@Override
-	public T getObj(Integer id)
+	public T getObj(Long id)
 	{
 		Class<?> class1 = getGenericClass();
 		return (T)this.getHibernateTemplate().get(class1, id);
@@ -52,7 +52,7 @@ public abstract class BaseDaoImpl<T, Q> extends HibernateDaoSupport implements B
 	}	
 	
 	@Override
-	public void delete(Integer id)
+	public void delete(Long id)
 	{
 		T obj = getObj(id);
 		this.getHibernateTemplate().delete(obj);
@@ -190,6 +190,30 @@ public abstract class BaseDaoImpl<T, Q> extends HibernateDaoSupport implements B
 		}
 	}
 
+	@Override
+	public List<T> queryObjByConditionNoPage(final Q q, final List<String> exclude ) 
+	{
+		@SuppressWarnings("unchecked")
+		List<T> tList = this.getHibernateTemplate().executeFind(new HibernateCallback<List<T>>() 
+		{
+
+			/**
+			 * Session是spring开启的代理session，可以自动的开事务，提交事务和关闭session
+			 */
+			@Override
+			public List<T> doInHibernate(Session session) throws HibernateException, SQLException 
+			{
+				String hql = createHql(q);
+				//创建查询对象
+				Query query = session.createQuery(hql);
+				setDynamicParam(query, q, exclude);
+				//获得查询对象的类对象
+				List<T> list = (List<T>)query.list();
+				return list;
+			}
+		});
+		return tList;
+	}
 	
 	//全查
 	public List<T> list()

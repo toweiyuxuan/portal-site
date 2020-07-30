@@ -6,6 +6,14 @@
 	<constant name="struts.devMode" value="true"></constant>
 	<constant name="struts.ui.theme" value="simple"></constant>
 	
+	<!-- 前台页面跳转开始 -->
+	<package name="front" extends="struts-default">
+		<action name="front_*" class="commonAction" method="front_{1}">
+			<result name="success">/front/{1}.jsp</result>
+		</action>
+	</package>
+	<!-- 前台页面跳转结束 -->
+	
 	<package name="basePack" extends="struts-default" abstract="true">
 		<interceptors>
 			<interceptor name="loginInterceptor" class="cn.wyx.interceptor.LoginInterceptor"></interceptor>
@@ -17,170 +25,66 @@
 		<default-interceptor-ref name="ldStack"></default-interceptor-ref>
 	</package>
 	
-	
-	<package name="LD" extends="basePack">
-	
-		<!--后台页面跳转专用  -->
-		<action name="LD_*">
-			<result>/WEB-INF/system/{1}.jsp</result>
-			<result name="none">/WEB-INF/system/{1}.jsp</result>
+	<!-- 后台页面跳转开始 -->
+	<package name="back" extends="basePack">
+		<action name="back_*">
+			<result>/WEB-INF/jsp/{1}.jsp</result>
+			<result name="none">/WEB-INF/jsp/{1}.jsp</result>
 		</action>
 		
-		<!-- UsersAction专用转发器 -->
-		<action name="user_*" class="userAction" method="user_{1}">
-			<result name="success">/WEB-INF/system/user/{1}.jsp</result>
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="ajax_u_*" class="userAction" method="ajax_u_{1}">
+		<!-- AdminsAction专用转发器-->
+		<action name="admins_*" class="adminsAction" method="admins_{1}">
 			<interceptor-ref name="ldStack">
-				<param name="loginInterceptor.excludeMethods">ajax_u_login</param>
+				<param name="loginInterceptor.excludeMethods">admins_login</param>
 			</interceptor-ref>
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="main" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>	
-		
-		<!-- AboutAction专用转发器 -->
-		<action name="about_*" class="aboutAction" method="about_{1}">
-			<result name="success">/WEB-INF/system/about/{1}.jsp</result>
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
+			<result name="success">/WEB-INF/jsp/{1}.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/{1}.jsp</result>
+			<result name="list">/WEB-INF/jsp/admin/{1}.jsp</result>
+			<result name="none" type="redirectAction">back_login</result>
 		</action>
-		<action name="ajax_a_*" class="aboutAction" method="ajax_a_{1}">
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="main" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>	
-		
-		
-		<!-- YewuAction专用转发器 -->
-		<action name="yewu_*" class="yewuAction" method="yewu_{1}">
-			<result name="success">/WEB-INF/system/yewu/{1}.jsp</result>
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="ajax_y_*" class="yewuAction" method="ajax_y_{1}">
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="main" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>	
-		
-		<!-- ContactAction专用转发器 -->
-		<action name="contact_*" class="contactAction" method="contact_{1}">
-			<result name="success">/WEB-INF/system/contact/{1}.jsp</result>
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="ajax_c_*" class="contactAction" method="ajax_c_{1}">
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="main" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>	
-		
-		<!-- AnliAction专用转发器 -->
-		<action name="anli_*" class="anliAction" method="anli_{1}">
-			<result name="success">/WEB-INF/system/anli/{1}.jsp</result>
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="ajax_an_*" class="anliAction" method="ajax_an_{1}">
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="main" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>	
-		
-		<!-- HuodongAction专用转发器 -->
-		<action name="huodong_*" class="huodongAction" method="huodong_{1}">
-			<result name="success">/WEB-INF/system/huodong/{1}.jsp</result>
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="ajax_h_*" class="huodongAction" method="ajax_h_{1}">
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="main" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>	
-		
-		<!-- FileAction专用转发器 -->
-		<action name="fileup_*" class="fileupAction" method="fileup_{1}">
-			<result name="success">/WEB-INF/system/fileup/{1}.jsp</result>
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="ajax_f_*" class="fileupAction" method="ajax_f_{1}">
-			<result name="none" type="redirectAction">LD_login</result>
-			<result name="main" type="redirectAction">LD_login</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="filedown" class="fileupAction" method="filedown">
-			<result name="success" type="stream">
-				<!-- 指定Action中输入流变量 -->
-				<param name="inputName">inputStream</param>
-				<!-- 设置响应的消息头 Content-Disposition -->
-				<param name="contentDisposition">attachment;filename=${fileName}</param>
-				<!-- 使用下载的方式来返回结果 -->
-				<param name="contentType">application/octet-stream</param>
-				<!-- 配置文件的大小 -->
-				<param name="contentLength">${fileLength}</param>
-			</result>
-		</action>
-	</package>	
 	
-	<!-- =============================================================================================================== -->
-	
-	<package name="ld" extends="struts-default">
-	
-		<!--前台页面跳转专用  -->
-		<action name="ld_*">
-			<result>/homejsps/{1}.jsp</result>
-			<result name="none">/WEB-INF/system/{1}.jsp</result>
+		<!-- ConfigsAction专用转发器-->
+		<action name="configs_*" class="configsAction" method="configs_{1}">
+			<result name="success">/WEB-INF/jsp/config/{1}.jsp</result>
+			<result name="none" type="redirectAction">back_login</result>
 		</action>
 		
-		<!-- AboutAction专用转发器 -->
-		<action name="labout_*" class="aboutAction" method="about_{1}">
-			<result name="success">/homejsps/about.jsp</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
+		<!-- DepartmentsAction专用转发器-->
+		<action name="departments_*" class="departmentsAction" method="departments_{1}">
+			<result name="success">/WEB-INF/jsp/department/{1}.jsp</result>
+			<result name="none" type="redirectAction">back_login</result>
 		</action>
 		
-		<!-- YewuAction专用转发器 -->
-		<action name="lyewu_*" class="yewuAction" method="yewu_{1}">
-			<result name="success">/homejsps/yewu.jsp</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
+		<!-- BusinessAction专用转发器-->
+		<action name="business_*" class="businessAction" method="business_{1}">
+			<result name="success">/WEB-INF/jsp/business/{1}.jsp</result>
+			<result name="none" type="redirectAction">back_login</result>
 		</action>
 		
-		<!-- ContactAction专用转发器 -->
-		<action name="lcontact_*" class="contactAction" method="contact_{1}">
-			<result name="success">/homejsps/contact.jsp</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
+		<!-- ExamplesAction专用转发器-->
+		<action name="examples_*" class="examplesAction" method="examples_{1}">
+			<result name="success">/WEB-INF/jsp/example/{1}.jsp</result>
+			<result name="none" type="redirectAction">back_login</result>
 		</action>
 		
-		<!-- AnliAction专用转发器 -->
-		<action name="lanli_*" class="anliAction" method="lanli_{1}">
-			<result name="success">/homejsps/anli.jsp</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="llanli_*" class="anliAction" method="anli_{1}">
-			<result name="success">/homejsps/details.jsp</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
+		<!-- ActivitysAction专用转发器-->
+		<action name="activitys_*" class="activitysAction" method="activitys_{1}">
+			<result name="success">/WEB-INF/jsp/activity/{1}.jsp</result>
+			<result name="none" type="redirectAction">back_login</result>
 		</action>
 		
-		<!-- HuodongAction专用转发器 -->
-		<action name="lhuodong_*" class="huodongAction" method="huodong_{1}">
-			<result name="success">/homejsps/huodong.jsp</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
-		</action>
-		<action name="llhuodong_*" class="huodongAction" method="huodong_{1}">
-			<result name="success">/homejsps/huodongdetails.jsp</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
+		<!-- DocumentsAction专用转发器-->
+		<action name="documents_*" class="documentsAction" method="documents_{1}">
+			<result name="success">/WEB-INF/jsp/document/{1}.jsp</result>
+			<result name="none" type="redirectAction">back_login</result>
 		</action>
 		
-		
-		<!-- FileupAction专用转发器 -->
-		<action name="lfileup_*" class="fileupAction" method="fileup_{1}">
-			<result name="success">/homejsps/fileup.jsp</result>
-			<result name="input">/WEB-INF/system/404.jsp</result>
+		<!-- UploadfilesAction专用转发器-->
+		<action name="uploadfiles_*" class="uploadfilesAction" method="uploadfiles_{1}">
+			<result name="success">/WEB-INF/jsp/uploadfile/{1}.jsp</result>
+			<result name="none" type="redirectAction">back_login</result>
 		</action>
 		
 	</package>
+	<!-- 后台页面跳转结束 -->	
 </struts>

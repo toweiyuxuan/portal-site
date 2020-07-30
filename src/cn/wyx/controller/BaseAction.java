@@ -23,21 +23,19 @@ public class BaseAction extends ActionSupport
 	
 	//返回 值标识
 	String MAIN = "main";
-	String WYX = "wyx";
+	String INPUT = "input";
+	String LIST = "list";
 	
 	public BaseAction() 
 	{
 		exclude.add("pageNo");
 		exclude.add("startNum");
-		exclude.add("whereQuery");
-		exclude.add("UId");
-		exclude.add("TId");
-		exclude.add("RId");
 		
 		request = ServletActionContext.getRequest();
 		response = ServletActionContext.getResponse();
 		session = request.getSession();
 		application = ServletActionContext.getServletContext();
+		response.setContentType("text/html");
 	}
 	
 }

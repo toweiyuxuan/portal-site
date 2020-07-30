@@ -10,9 +10,9 @@ public interface BaseService<T, Q>
 	
 	public void update(T t);
 	
-	public T getObj(Integer id);
+	public T getObj(Long long1);
 	
-	public void delete(Integer id);
+	public void delete(Long id);
 	
 	public void delete(T t);
 	
@@ -20,4 +20,5 @@ public interface BaseService<T, Q>
 	
 	public List<T> list();
 	
+	public List<T> queryObjByConditionNoPage(final Q q, final List<String> exclude );	
 }
